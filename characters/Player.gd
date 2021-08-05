@@ -3,14 +3,14 @@ extends KinematicBody
 signal hit
 
 export var speed = 0.5
-export var jump_impulse = 2.5
+export var jump_impulse = 2
 export var fall_acceleration = 10.0
 export var bounce_impulse = 1.0
 
 var direction = Vector3.ZERO
 var velocity = Vector3.ZERO
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	get_physics_from_input()
 	get_animation_from_physics()
 	apply_physics(delta)
@@ -43,12 +43,13 @@ func get_animation_from_physics() -> void:
 		$AnimationPlayer.playback_speed = 1.0
 		
 	# Plays animation (TODO)
-	if (velocity.x != 0 or velocity.z != 0):
-		pass
-	elif (velocity.y != 0):
-		pass
+	if (!is_on_floor()):
+		playAnimation("jump")
+	elif (direction != Vector3.ZERO):
+		playAnimation("walk")
 	else:
-		pass
+		#print("stop!")
+		$AnimationPlayer.stop()
 
 # Applies motion to kinematic body
 func apply_physics(delta) -> void:
@@ -67,9 +68,15 @@ func check_for_mobs() -> void:
 				mob.squash() # can play an animation in this func
 				velocity.y = bounce_impulse
 
-func die():
+# Plays the animation
+func playAnimation(animation) -> void:
+	if ($AnimationPlayer.has_animation(animation)):
+		if ($AnimationPlayer.current_animation != animation):
+			$AnimationPlayer.play(animation)
+
+func die() -> void:
 	emit_signal("hit")
 	queue_free()
 	
-func _on_MobDetector_body_entered(_body):
+func _on_MobDetector_body_entered(_body) -> void:
 	die()
