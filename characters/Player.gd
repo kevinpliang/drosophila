@@ -7,6 +7,8 @@ export var jump_impulse = 2
 export var fall_acceleration = 10.0
 export var bounce_impulse = 1.0
 
+var frequency
+
 var direction = Vector3.ZERO
 var velocity = Vector3.ZERO
 

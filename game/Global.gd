@@ -21,4 +21,3 @@ func instance_node_at(node, location, parent):
 	node_instance.translation = location
 	return node_instance
 
-

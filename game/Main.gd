@@ -12,4 +12,6 @@ func _ready():
 	
 func start_game() -> void:
 	world_instance = Global.instance_node(world, self)
-	Global.instance_node_at(player, Vector3(0, 1, 0), self)
+	Global.player = Global.instance_node_at(player, Vector3(0, 1, 0), self)
+	# Set his frequency here (RNG?)
+	Global.player.frequency = 0.5
