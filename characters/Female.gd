@@ -11,7 +11,7 @@ var direction = Vector3.ZERO
 var velocity = Vector3.ZERO
 
 func _ready():
-	pass 
+	pass
 
 func _physics_process(delta):
 	apply_physics(delta)

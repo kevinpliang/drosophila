@@ -16,4 +16,14 @@ func start_game() -> void:
 	Global.player = Global.instance_node_at(player, Vector3(0, 1, 0), self)
 	# Set his frequency here (RNG?)
 	Global.player.frequency = 0.5
-	Global.instance_node_at(female, Vector3(0.001, 1, 0), self)
+	spawn_females(10)
+
+func spawn_females(number) -> void:
+	var x
+	var z
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	for i in number:
+		x = rng.randf_range(-0.9,0.9)
+		z = rng.randf_range(-0.6,0.6)
+		Global.instance_node_at(female, Vector3(x,1,z),self)

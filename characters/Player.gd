@@ -18,7 +18,7 @@ func _physics_process(delta) -> void:
 	apply_physics(delta)
 	check_for_mobs()
 
-# Gets motion from input	
+# Gets motion from input
 func get_physics_from_input() -> void:
 	# idle if nothing pressed
 	direction = Vector3.ZERO
@@ -30,7 +30,7 @@ func get_physics_from_input() -> void:
 		direction.z += 1 
 	if Input.is_action_pressed("ui_up"):
 		direction.z -= 1 
-	if is_on_floor() and Input.is_action_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y += jump_impulse
 
 # Plays correct animation based on current motion
