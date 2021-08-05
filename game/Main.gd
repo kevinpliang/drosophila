@@ -18,6 +18,7 @@ func start_game() -> void:
 	Global.player.frequency = 0.5
 	spawn_females(10)
 
+# Spawns [number] females at random locations
 func spawn_females(number) -> void:
 	var x
 	var z

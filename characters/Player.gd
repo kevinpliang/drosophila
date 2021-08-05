@@ -44,13 +44,12 @@ func get_animation_from_physics() -> void:
 	else: 
 		$AnimationPlayer.playback_speed = 1.0
 		
-	# Plays animation (TODO)
+	# Plays animation 
 	if (!is_on_floor()):
-		playAnimation("jump")
+		play_animation("jump")
 	elif (direction != Vector3.ZERO):
-		playAnimation("walk")
+		play_animation("walk")
 	else:
-		#print("stop!")
 		$AnimationPlayer.stop()
 
 # Applies motion to kinematic body
@@ -71,7 +70,7 @@ func check_for_mobs() -> void:
 				velocity.y = bounce_impulse
 
 # Plays the animation
-func playAnimation(animation) -> void:
+func play_animation(animation) -> void:
 	if ($AnimationPlayer.has_animation(animation)):
 		if ($AnimationPlayer.current_animation != animation):
 			$AnimationPlayer.play(animation)
