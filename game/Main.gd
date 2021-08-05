@@ -6,7 +6,6 @@ onready var player = preload("res://characters/Player.tscn")
 onready var world = preload("res://environment/World.tscn")
 var world_instance
 
-
 func _ready():
 	Global.main = self
 	start_game()
