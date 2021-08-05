@@ -20,8 +20,8 @@ Global="*res://game/Global.gd"
 
 [display]
 
-window/size/width=64
-window/size/height=64
+window/size/width=300
+window/size/height=300
 window/size/test_width=900
 window/size/test_height=900
 window/stretch/mode="viewport"

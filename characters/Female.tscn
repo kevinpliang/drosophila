@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://characters/assets/femalefly/femalefly.glb" type="PackedScene" id=1]
+[ext_resource path="res://characters/Female.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape" id=7]
+radius = 0.00977854
+height = 0.0272282
+
+[sub_resource type="SphereShape" id=8]
+radius = 0.05
+
+[sub_resource type="Animation" id=10]
+length = 0.4
+loop = true
+
+[node name="Female" type="KinematicBody"]
+script = ExtResource( 2 )
+
+[node name="Pivot" type="Spatial" parent="."]
+
+[node name="femalefly" parent="Pivot" instance=ExtResource( 1 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.937901, 0.346903, 0, -0.346903, 0.937901, 0, -0.002, -0.00859475 )
+shape = SubResource( 7 )
+
+[node name="MobDetector" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="MobDetector"]
+shape = SubResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/walk = SubResource( 10 )
+
+[node name="Listener" type="Listener" parent="."]
