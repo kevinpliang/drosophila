@@ -2,8 +2,8 @@ extends KinematicBody
 
 signal hit
 
-export var speed = 1.0
-export var jump_impulse = 5.0
+export var speed = 0.5
+export var jump_impulse = 2.5
 export var fall_acceleration = 10.0
 export var bounce_impulse = 1.0
 
