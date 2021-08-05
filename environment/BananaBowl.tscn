@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://environment/assets/table/BananaBowl/banana_bowl_v2.glb" type="PackedScene" id=1]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 44.3367
+height = 19.3433
+
+[node name="BananaBowl" instance=ExtResource( 1 )]
+
+[node name="StaticBody" type="StaticBody" parent="." index="6"]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.7342, 14.3436, 0 )
+shape = SubResource( 1 )

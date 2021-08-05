@@ -1,0 +1,4 @@
+[gd_scene format=2]
+
+[node name="CameraPivot" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0 )
