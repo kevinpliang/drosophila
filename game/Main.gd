@@ -28,3 +28,7 @@ func spawn_females(number) -> void:
 		x = rng.randf_range(-0.9,0.9)
 		z = rng.randf_range(-0.6,0.6)
 		Global.instance_node_at(female, Vector3(x,1,z),self)
+		
+# Changes $UI/Notification to [text]
+func change_notification(newText) -> void:
+	$UI/Notification.text = newText

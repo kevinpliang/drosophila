@@ -10,15 +10,16 @@ var frequency
 var direction = Vector3.ZERO
 var velocity = Vector3.ZERO
 var females_in_range = 0
+var in_mating_dance = false
 
 func _physics_process(delta) -> void:
 	get_physics_from_input()
 	get_animation_from_physics()
 	apply_physics(delta)
+	update_label()
 
 # Gets motion from input
 func get_physics_from_input() -> void:
-	print(females_in_range)
 	# idle if nothing pressed
 	direction = Vector3.ZERO
 	if Input.is_action_pressed("ui_right"):
@@ -29,7 +30,13 @@ func get_physics_from_input() -> void:
 		direction.z += 1 
 	if Input.is_action_pressed("ui_up"):
 		direction.z -= 1 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+		
+	in_mating_dance = false
+	if Input.is_action_pressed("jump") and females_in_range:
+		# Mating dance
+		in_mating_dance = true
+	elif Input.is_action_just_pressed("jump") and is_on_floor():
+		# Jump
 		velocity.y += jump_impulse
 
 # Plays correct animation based on current motion
@@ -44,9 +51,11 @@ func get_animation_from_physics() -> void:
 		$AnimationPlayer.playback_speed = 1.0
 		
 	# Plays animation 
-	if (!is_on_floor()):
+	if !is_on_floor():
 		play_animation("jump")
-	elif (direction != Vector3.ZERO):
+	elif in_mating_dance:
+		play_animation("jump")
+	elif direction != Vector3.ZERO:
 		play_animation("walk")
 	else:
 		$AnimationPlayer.stop()
@@ -63,6 +72,14 @@ func play_animation(animation) -> void:
 	if ($AnimationPlayer.has_animation(animation)):
 		if ($AnimationPlayer.current_animation != animation):
 			$AnimationPlayer.play(animation)
+
+# Shows correct label
+func update_label() -> void:
+	if in_mating_dance:
+		Global.main.change_notification("performing mating dance...")
+	elif females_in_range:
+		Global.main.change_notification("hold [space] to dance")
+
 
 func die() -> void:
 	queue_free()
