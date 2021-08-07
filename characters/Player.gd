@@ -1,7 +1,5 @@
 extends KinematicBody
 
-signal hit
-
 export var speed = 0.5
 export var jump_impulse = 2
 export var fall_acceleration = 10.0
@@ -16,7 +14,7 @@ func _physics_process(delta) -> void:
 	get_physics_from_input()
 	get_animation_from_physics()
 	apply_physics(delta)
-	check_for_mobs()
+	# check_for_mobs()
 
 # Gets motion from input
 func get_physics_from_input() -> void:
@@ -59,16 +57,6 @@ func apply_physics(delta) -> void:
 	velocity.y -= fall_acceleration * delta
 	velocity = move_and_slide(velocity, Vector3.UP)
 
-# Checks if you are colliding with a mob
-func check_for_mobs() -> void:
-	for index in get_slide_count():
-		var collision = get_slide_collision(index)
-		if collision.collider.is_in_group("mob"):
-			var mob = collision.collider
-			if Vector3.UP.dot(collision.normal) > 0.1:
-				mob.squash() # can play an animation in this func
-				velocity.y = bounce_impulse
-
 # Plays the animation
 func play_animation(animation) -> void:
 	if ($AnimationPlayer.has_animation(animation)):
@@ -76,8 +64,4 @@ func play_animation(animation) -> void:
 			$AnimationPlayer.play(animation)
 
 func die() -> void:
-	emit_signal("hit")
 	queue_free()
-	
-func _on_MobDetector_body_entered(_body) -> void:
-	die()

@@ -8,7 +8,7 @@ radius = 0.00977854
 height = 0.0272282
 
 [sub_resource type="SphereShape" id=8]
-radius = 0.05
+radius = 0.158611
 
 [sub_resource type="Animation" id=10]
 length = 0.4
@@ -26,15 +26,15 @@ speed = 0.25
 transform = Transform( 1, 0, 0, 0, 0.937901, 0.346903, 0, -0.346903, 0.937901, 0, -0.002, -0.00859475 )
 shape = SubResource( 7 )
 
-[node name="MobDetector" type="Area" parent="."]
+[node name="InteractRadius" type="Area" parent="." groups=[
+"female",
+]]
 
-[node name="CollisionShape" type="CollisionShape" parent="MobDetector"]
+[node name="CollisionShape" type="CollisionShape" parent="InteractRadius"]
 shape = SubResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/walk = SubResource( 10 )
-
-[node name="Listener" type="Listener" parent="."]
 
 [node name="WaitTimer" type="Timer" parent="."]
 wait_time = 0.001
