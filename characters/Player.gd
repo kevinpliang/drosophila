@@ -9,15 +9,16 @@ var frequency
 
 var direction = Vector3.ZERO
 var velocity = Vector3.ZERO
+var females_in_range = 0
 
 func _physics_process(delta) -> void:
 	get_physics_from_input()
 	get_animation_from_physics()
 	apply_physics(delta)
-	# check_for_mobs()
 
 # Gets motion from input
 func get_physics_from_input() -> void:
+	print(females_in_range)
 	# idle if nothing pressed
 	direction = Vector3.ZERO
 	if Input.is_action_pressed("ui_right"):
@@ -65,3 +66,11 @@ func play_animation(animation) -> void:
 
 func die() -> void:
 	queue_free()
+
+func _on_InteractRadius_area_entered(area):
+	if (area.is_in_group("female")):
+		females_in_range += 1
+
+func _on_InteractRadius_area_exited(area):
+	if (area.is_in_group("female")):
+		females_in_range -= 1
