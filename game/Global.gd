@@ -5,6 +5,7 @@ extends Node
 var main = null
 var player = null
 
+
 # helper method for creating nodes
 func instance_node(node, parent):
 	var node_instance = node.instance()

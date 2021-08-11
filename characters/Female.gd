@@ -45,8 +45,8 @@ func _on_WaitTimer_timeout():
 	randomize_target()	
 	waiting = false
 	
-func _on_InteractRadius_area_entered(area):
+func _on_InteractRadius_area_entered(_area):
 	pass
 
-func _on_InteractRadius_area_exited(area):
+func _on_InteractRadius_area_exited(_area):
 	pass

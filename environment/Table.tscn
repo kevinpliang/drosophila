@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://environment/assets/table/wood.material" type="Material" id=1]
 [ext_resource path="res://environment/BananaBowl.tscn" type="PackedScene" id=2]
 [ext_resource path="res://environment/Apple.tscn" type="PackedScene" id=3]
+[ext_resource path="res://environment/Mug.tscn" type="PackedScene" id=4]
 [ext_resource path="res://environment/assets/table/marble.material" type="Material" id=5]
 
 [sub_resource type="ArrayMesh" id=1]
@@ -59,3 +60,6 @@ transform = Transform( 0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, -0.705843, 0.77826
 
 [node name="apple1" parent="Apples" instance=ExtResource( 3 )]
 transform = Transform( 0.000500156, 0.00310621, -0.00247008, -0.00350284, 0.00151579, 0.00119688, 0.00186547, 0.00201342, 0.00290967, -0.674579, 0.772934, -0.341165 )
+
+[node name="Mug" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0447989, -1.14372e-05, 0.0224018, 9.41706e-06, 0.05, 6.77781e-06, -0.022451, -1.84987e-06, 0.0447008, -0.112255, 0.824617, -0.237515 )

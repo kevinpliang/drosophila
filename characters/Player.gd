@@ -11,6 +11,11 @@ var direction = Vector3.ZERO
 var velocity = Vector3.ZERO
 var females_in_range = 0
 var in_mating_dance = false
+onready var Retry = get_tree().root.get_node("Main/UI/Retry")
+
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_accept") and Retry.visible:
+		get_tree().reload_current_scene()
 
 func _physics_process(delta) -> void:
 	get_physics_from_input()
@@ -46,7 +51,6 @@ func get_animation_from_physics() -> void:
 		direction = direction.normalized()
 		# translation is a property inherent to the player
 		$Pivot.look_at(translation - direction, Vector3.UP) 
-		$AnimationPlayer.playback_speed = 4.0
 	else: 
 		$AnimationPlayer.playback_speed = 1.0
 		
@@ -80,9 +84,9 @@ func update_label() -> void:
 	elif females_in_range:
 		Global.main.change_notification("hold [space] to dance")
 
-
 func die() -> void:
-	queue_free()
+	print("HELOOOOO")
+	Retry.show()
 
 func _on_InteractRadius_area_entered(area):
 	if (area.is_in_group("female")):

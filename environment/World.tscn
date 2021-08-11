@@ -17,7 +17,9 @@ light_color = Color( 0.780392, 0.52549, 0.164706, 1 )
 light_energy = 2.0
 shadow_enabled = true
 spot_range = 2.6
+spot_attenuation = 0.535887
 spot_angle = 22.6702
+spot_angle_attenuation = 0.353553
 
 [node name="table" parent="WorldEnvironment" instance=ExtResource( 1 )]
 

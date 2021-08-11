@@ -25,3 +25,28 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Retry" type="ColorRect" parent="UI"]
+visible = false
+margin_right = 64.0
+margin_bottom = 64.0
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/Retry"]
+margin_left = -23.6532
+margin_top = -0.0331059
+margin_right = 94.3468
+margin_bottom = 63.9669
+rect_min_size = Vector2( 64, 64 )
+custom_fonts/font = ExtResource( 2 )
+text = "press 
+enter 
+to retry"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
