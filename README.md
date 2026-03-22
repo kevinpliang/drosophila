@@ -1,6 +1,6 @@
 # Drosophila
 
-A game about finding purpose.
+[A game](https://yungraft.itch.io/drosophilia) about finding purpose.
 
 ## Description
 
